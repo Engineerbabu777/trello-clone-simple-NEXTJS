@@ -1,12 +1,29 @@
+import Boards from "@/src/components/Boards";
+import LoginView from "@/src/components/views/LoginView";
+import {authOptions} from "@/src/lib/authOptions";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {getServerSession} from "next-auth";
+import Link from "next/link";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
-
-
-import React from 'react'
-
-type Props = {}
-
-export default function page({}: Props) {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return (
+      <LoginView />
+    );
+  }
   return (
-    <>Have a Good Coding Day!</>
+    <div>
+      <h1 className="text-4xl mb-4">Your boards</h1>
+      <Boards/>
+      <div className="mt-4">
+        <Link
+          className="btn primary inline-flex gap-2"
+          href={'/new-board'}>
+          Create new board <FontAwesomeIcon className="h-6" icon={faArrowRight}/>
+        </Link>
+      </div>
+    </div>
   )
 }
