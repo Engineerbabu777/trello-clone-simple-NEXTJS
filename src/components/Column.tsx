@@ -1,5 +1,5 @@
 import { Card, useMutation, useStorage } from "@/src/app/liveblocks.config";
-import CancelButton from "@/components/CancelButton";
+import CancelButton from "@/src/components/CancelButton";
 import {
 	faClose,
 	faEllipsis,
