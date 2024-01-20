@@ -1,8 +1,8 @@
 'use client';
-import {updateBoard} from "@/app/actions/boardActions";
-import {RoomProvider, useMyPresence, useUpdateMyPresence} from "@/app/liveblocks.config";
-import {BoardContextProvider} from "@/components/BoardContext";
-import Columns from "@/components/Columns";
+import {updateBoard} from "@/src/app/actions/boardActions";
+import {RoomProvider, useMyPresence, useUpdateMyPresence} from "@/src/app/liveblocks.config";
+import {BoardContextProvider} from "@/src/components/BoardContext";
+import Columns from "@/src/components/Columns";
 import {faCog} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {LiveList} from "@liveblocks/core";

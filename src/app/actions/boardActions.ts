@@ -33,3 +33,33 @@ export async function createBoard (name: string): Promise<false | RoomInfo> {
 
   return false
 }
+
+
+
+export async function addEmailToBoard(boardId:string, email:string) {
+  const room = await liveblocksClient.getRoom(boardId);
+  const usersAccesses = room.usersAccesses;
+  usersAccesses[email] = ['room:write'];
+  console.log(usersAccesses);
+  await liveblocksClient.updateRoom(boardId, {usersAccesses});
+  return true;
+}
+
+export async function updateBoard(boardId:string, updateData:any) {
+  const result = await liveblocksClient.updateRoom(boardId, updateData);
+  console.log({result});
+  return true;
+}
+
+export async function removeEmailFromBoard(boardId:string, email:string) {
+  const room = await liveblocksClient.getRoom(boardId);
+  const usersAccesses:any = room.usersAccesses;
+  usersAccesses[email] = null;
+  await liveblocksClient.updateRoom(boardId, {usersAccesses});
+  return true;
+}
+
+export async function deleteBoard(boardId:string) {
+  await liveblocksClient.deleteRoom(boardId);
+  return true;
+}
